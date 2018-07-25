@@ -1,45 +1,50 @@
 package com.timbuchalka;
 
+import java.lang.*;
+
 public class Main {
 
     public static void main(String[] args) {
-        printFactors(20);
-        System.out.println("********************************");
-        printFactors(36);
-        System.out.println("********************************");
-        printFactors(26);
-        System.out.println("********************************");
-        printFactors(10);
-        System.out.println("********************************");
-        printFactors(16);
-        System.out.println("********************************");
+        System.out.println(printFactors(10));
     }
 
-    private static String printFactors(int number) {
+    public static StringBuilder printFactors(int number) {
         if (number < 1) {
-            return "Invalid Value";
+            StringBuilder invalidValue = new StringBuilder("Invalid Value");
+            return invalidValue;
         }
-        String factorsConcatenated = " ";
-        for (int factor = 1; factor < number; factor++) {
-            if (number % factor != 0) {
-                //factorsConcatenated = factorsConcatenated + factor;
-                System.out.println("Was this even executed?");
+        StringBuilder factorsConcatenated = new StringBuilder("1");
+        for (int factor = 2; factor <= number; factor++) {
+            if (number % factor == 0) {
+                factorsConcatenated = factorsConcatenated.append(" " + factor);
             }
         }
         return factorsConcatenated;
     }
+/*
+String concatenation '+' in loop less... (Ctrl+F1)
+Reports String concatenation in loops. As every String concatenation copies the whole String,
+usually it is preferable to replace it with explicit calls to StringBuilder.append() or StringBuffer.append().
+ */
+/*
+*****************************************SOLUTION USING STRINGBUILDER*******************************
+
+    public static StringBuilder printFactors(int number) {
+        if (number < 1) {
+            StringBuilder invalidValue = new StringBuilder("Invalid Value");
+            return invalidValue;
+        }
+        StringBuilder factorsConcatenated = new StringBuilder("1");
+        for (int factor = 2; factor <= number; factor++) {
+            if (number % factor == 0) {
+                factorsConcatenated = factorsConcatenated.append(" " + factor);
+            }
+        }
+        return factorsConcatenated;
+    }
+
+ */
 }
 
 
-/*
-----10
-1 2 5 10
-----25
-1 5 25
-----16
-1 2 4 8 16
-----26
-1 2 13 26
 
-
- */
